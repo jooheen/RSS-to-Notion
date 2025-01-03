@@ -60,7 +60,8 @@ def parse_rss_entries(url, retries=3):
 							"title": entry.get("title"),
 							"link": entry.get("link"),
 							"time": published_time.astimezone(timezone(timedelta(hours=8))).strftime("%Y-%m-%dT%H:%M:%S%z"),
-							"summary": re.sub(r"<.*?>|\n*", "", entry.get("summary"))[:2000],
+							"summary": entry.get("summary"),  
+							## "summary": re.sub(r"<.*?>|\n*", "", entry.get("summary"))[:2000],
 							"content": entry.get("content"),
 							"cover": src
 						}
