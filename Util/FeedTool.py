@@ -149,10 +149,6 @@ class NotionAPI:
 		api response from notion
 		"""
 		# print(entry.get("cover"))
-    # 转换 summary 为富文本格式
-    markdown_converter = html2text.HTML2Text()
-    markdown_converter.ignore_links = False
-    summary_rich_text = markdown_converter.handle(summary)
 		# Construct post request to reading database
 		payload = {
 			"parent": {"database_id": self.reader_id},
@@ -185,7 +181,7 @@ class NotionAPI:
 						"rich_text": [
 							{
 								"type": "text",
-								"text": {"content": summary_rich_text},
+								"text": {"content": entry.get("summary")},
 							}
 						]
 					},
